@@ -17,7 +17,7 @@ x = df.drop('', axis=1)
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
 
 # 4. 모델 선택하기
-# 4-1. classifier 알고리즘 전부 추출
+# 4-1. regressor 알고리즘 전부 추출
 from sklearn.utils.testing import all_estimators
 
 allAlgorithms = all_estimators(type_filter='regressor') 
@@ -41,4 +41,6 @@ loss = r2_score(x_test, y_test)
 print("loss : %.2f"% loss)
 
 y_pred = model.predict(x_test)
-print("Accuracy : %.2f" % r2_score(y_pred, y_test)) 
+print("loss : %.2f" % r2_score(y_pred, y_test)) 
+
+
