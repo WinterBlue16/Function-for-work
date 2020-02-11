@@ -23,6 +23,7 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, shuffle
 
 '''
 # 3-1. 다중 분류 시 One-hot Encoding
+# sklearn
 from sklearn.preprocessing import OneHotEncoder
 
 onehot_encoder = OneHotEncoder()
@@ -31,6 +32,18 @@ y_test = y_test.reshape(len(y_test), -1)
 
 y_train = onehot_encoder.fit_transform(y_train)
 y_test = onehot_encoder.fit_transform(y_test)
+
+# keras == 1.14
+from keras.utils import np_utils
+y_train = np_utils.to_categorical(y_train)
+y_val = np_utils.to_categorical(y_val)
+
+# keras == 2.0
+from tensorflow.keras.utils import to_categorical
+
+y_train = to_categorical(y_train)
+y_test = to_categorical(y_test)
+
 '''
 
 
