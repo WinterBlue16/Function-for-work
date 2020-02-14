@@ -63,13 +63,28 @@ model = Model(inputs=, outputs=)
 model.compile(loss='mse', 
               optimizer='adam',
               metrics=['mae'])
-model.fit(,epochs=,batch_size=, validation_split=)
+hist = model.fit(,epochs=,batch_size=, validation_split=)
 
 # 6. 평가 검증하기
 loss, mae = model.evaluate()
 print('loss :', loss)
 print('mae :', mae)
 
+# 7. matplotlib으로 시각화
+import matplotlib.pyplot as plt
+
+plt.plot(hist.history['loss'])
+plt.plot(hist.history['val_loss'])
+plt.plot(hist.history['acc'])
+plt.plot(hist.history['val_acc'])
+plt.title('DACON DNN loss, acc')
+plt.xlabel('epoch')
+plt.ylabel('loss, acc')
+plt.legend(['train loss', 'test loss', 'train acc', 'test acc'])
+plt.show()
+
+
+# 8. R2, RMSE로 모델 평가하기
 from sklearn.metrics import mean_squared_error, r2_score
 y_pred = model.predict(x_test, batch_size=)
 
@@ -83,7 +98,7 @@ R2 = r2_score(y_test, y_pred)
 print("R2 :", R2)
 
 
-# 7. 모델 저장하기
+# 9. 모델 저장하기
 model.save('./save/DNN_model02.h5') # 경로 수정
 print('저장 완료')
 
