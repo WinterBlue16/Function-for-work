@@ -26,16 +26,21 @@ def changedatetype(column):
 
 # 문자열에 대한 함수 목록(https://m.blog.naver.com/PostView.nhn?blogId=wideeyed&logNo=221603778414&proxyReferer=https%3A%2F%2Fwww.google.com%2F)
 
+
+
 # 4. 데이터 분포 확인(이상치 여부 판단)
 df.hist(bin=, figsize=( , ))
 
 # 5. 열별 분석
-df[].value_counts()
+df['열 이름'].value_counts()
 
 # 6. Null값 채우기
+df.loc[df.isnull()['열 이름']] # NaN값이 있는 행들만 뽑아내 확인
+df['열 이름'].replace({'바꾸고 싶은 내용 1': 바꿀 내용 1, '바꾸고 싶은 내용 2': 바꿀 내용 2}) # 특정한 값 골라내어 다른 값으로 바꾸기
 
 # 7. 필요없는 열, 행 제거하기
-del df[]
+del df['열 이름']
+df.rename(columns={"원래 열 이름":"바꿀 열 이름"}, inplace=True)
 
 # 8. 문자(str)를 숫자(int, float)로 전환
 int()
