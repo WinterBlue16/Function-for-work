@@ -37,10 +37,14 @@ df['열 이름'].value_counts()
 # 6. Null값 채우기
 df.loc[df.isnull()['열 이름']] # NaN값이 있는 행들만 뽑아내 확인
 df['열 이름'].replace({'바꾸고 싶은 내용 1': 바꿀 내용 1, '바꾸고 싶은 내용 2': 바꿀 내용 2}) # 특정한 값 골라내어 다른 값으로 바꾸기
+df['열 이름'].replace(np.nan, 바꿀 내용) # 결측치 부분 대체하기
+df['열 이름'].astype(int) # 정수형으로 변경
+df['열 이름'].astype(float) # 실수형으로 변경 # df.astype으로 전체 데이터 프레임에도 적용 가능
 
 # 7. 필요없는 열, 행 제거하기
 del df['열 이름']
 df.rename(columns={"원래 열 이름":"바꿀 열 이름"}, inplace=True)
+df.dropna() # 결측치가 존재하는 모든 행을 제거
 
 # 8. 문자(str)를 숫자(int, float)로 전환
 int()
