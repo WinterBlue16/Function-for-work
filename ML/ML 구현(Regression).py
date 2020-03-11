@@ -37,7 +37,7 @@ for (name, algorithm) in allAlgorithms:
 model.fit(x_train, y_train)
 
 # 6. 평가 검증하기
-loss = r2_score(x_test, y_test) 
+loss = r2_score(y_pred, y_test) 
 print("loss : %.2f"% loss)
 
 y_pred = model.predict(x_test)
