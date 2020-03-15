@@ -76,7 +76,7 @@ model.fit(x_train, y_train)
 
 
 # 6. 평가 검증하기
-score = model.score(x_test, y_test) 
+score = model.score(y_pred, y_test) 
 print("score : %.2f"% score)
 
 y_pred = model.predict(x_test)
