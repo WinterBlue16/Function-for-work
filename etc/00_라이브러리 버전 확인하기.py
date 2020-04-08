@@ -3,6 +3,7 @@
 pip freeze 
 
 # 방법 2 
+# 확인하고 싶은 라이브러리를 import한 후 실행
 import urllib.request 
 import keras as k
 import tensorflow as tf
