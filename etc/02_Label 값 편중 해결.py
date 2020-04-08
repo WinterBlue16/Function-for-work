@@ -1,4 +1,4 @@
-# y 값(target, laber)이 편중되어 있을 경우 사용
+# y 값(target, label)이 편중되어 있을 경우 사용
 # wine data 예시(https://github.com/WinterBlue16/Function-for-work/blob/master/Bad%20example%20of%20y_data.png?raw=true)
 import pandas as pd
 import numpy as np
