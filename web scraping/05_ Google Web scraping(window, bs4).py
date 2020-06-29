@@ -1,3 +1,6 @@
+# Youtube video id를 가져오기 위해 사용한 크롤링 코드로 필요한 링크를 html 소스코드에서 가져와야 할 때, 다수의 for문을 사용할 때 응용할 수 있다.
+
+
 from selenium import webdriver
 import time
 import re
