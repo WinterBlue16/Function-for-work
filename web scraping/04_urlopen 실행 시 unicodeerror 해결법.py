@@ -5,7 +5,7 @@
 from bs4 import BeautifulSoup
 import requests
 from urllib.request import urlopen
-from urlib.parse import quote # 요게 핵심!
+from urllib.parse import quote # 요게 핵심!
 import time
 
 query = quote('프로그래머') # query가 한글일 경우 quote로 감싸주면 에러가 발생하지 않는다
