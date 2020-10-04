@@ -47,7 +47,8 @@ $ conda remove -n "가상환경 이름" --all
 
 
 ## 2. jupyter notebook에 kernel 추가하기
-
+> jupyter notebook에서 바로 새로운 가상환경에 접속할 수 있도록 별도의 커널을 추가한다. 
+원래 위처럼 만든 가상환경에 접속하기 위해서는 `cmd`를 통해 가상환경을 만들어둔 위치로 이동하고, `conda activate` 명령어를 이용해야 활성화할 수 있다. 하지만 그 방법 대신 jupyter notebook에 커널을 추가하는 것으로 손쉽게 가상환경을 활성화시킬 수 있다. 
  
 
 ```shell
