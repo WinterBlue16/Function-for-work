@@ -10,20 +10,23 @@
 > '작업 관리자' > '성능' 탭에서 조회 가능
 
 노트북의 외장 그래픽은 `NVIDIA GeForce GTX 1650`로, CUDA 홈페이지의 지원 가능 목록에 추가되어있지는 않으나 사용이 가능하다. [NVIDIA 질의응답 페이지](https://forums.developer.nvidia.com/t/cuda-enabled-geforce-1650/81010/2)에 따르면 2008년 이후 출시된 모든 GPU 버전은 CUDA의 지원을 받는다고 한다. 
-버전을 확인했다면 그 다음은 본격적으로 준비를 할 차례다. tensorflow-gpu를 설치하기 위해 준비해야 하는 파일은 세 가지이다. 첫 번째는 visual studio, 두 번째가 CUDA, 세 번째가 cuDNN이다. 
+버전을 확인했다면 그 다음은 본격적으로 준비를 할 차례다. tensorflow-gpu를 설치하기 위해 준비해야 하는 파일은 세 가지이다. 첫 번째는 **visual studio code**, 두 번째가 **CUDA**, 세 번째가 **cuDNN**이다. 
 
 
 ## 1. VisualStudio2019 다운로드 및 설치
-> 반드시 CUDA 전에 설치를 완료해 놓을 것!
+> 반드시 CUDA 전에 설치를 완료해 놓을 것! 
+
 VisualStudio는 [공식 링크](https://visualstudio.microsoft.com/ko/vs/)를 통해 다운로드할 수 있으며, 설치 시간이 20분~30분 정도 걸릴 수 있다. 옵션의 설치는 사용자의 편의에 따르며 옵션에 따라 파일의 크기가 달라질 수 있다. 
 
 
+
 ## 2. CUDA 다운로드 및 설치
+
 > window 10 운영체제를 사용할 경우 통상적으로 CUDA 10 이상의 버전을 설치하게 된다. 하지만 똑같은 10 이상 버전이라도 컴퓨터에 따라 후에 실행 시 오류가 발생할 수 있으므로 주의한다.
 
 CUDA 10.2
 
-CUDA 10.1 update2
+CUDA 10.1 update2(설치 버전)
 
 CUDA 10.1 update1
 
@@ -33,7 +36,7 @@ CUDA 10.1
 
 cuDNN 8.0.3
 
-cuDNN 7.6.5
+cuDNN 7.6.5(설치 버전)
 
 ## 4. cuDNN 세팅
 
@@ -64,3 +67,5 @@ tf.test.is_gpu_available()
 
 
 ## 6. 결과
+
+jupyter notebook screen shot
