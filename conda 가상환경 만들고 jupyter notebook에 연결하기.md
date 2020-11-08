@@ -31,7 +31,7 @@ $ conda info --env # 설치된 가상환경 확인
 ```shell
 $ conda activate "가상환경 이름" # 가상환경 실행
 # ex) conda activate gpu_env
-$ conda install "가상환경에 설치할 라이브러리 이름" # 라이브러리 설치 코드 1
+$ conda install "가상환경에 설치할 라이브러리 이름" # 라이브러리 설치 코드 1 # 1, 2중 어느 것을 써도 상관없음!
 $ pip install "가상환경에 설치할 라이브러리 이름" # 라이브러리 설치 코드 2
 
 $ conda deactivate # 가상환경 실행 종료
@@ -64,5 +64,7 @@ $ jupyter kernelspec uninstall "가상환경 이름"
 # ex) jupyter kernelspec uninstall gpu_env
 ```
 
+아래는 tf-gpu:2.1.0이라는 이름의 가상환경 커널을 추가한 모습이다. 
 
+![붙여넣기](https://user-images.githubusercontent.com/58945760/98463846-ca57de80-2201-11eb-81ea-1ad0c8a0921c.png)
 

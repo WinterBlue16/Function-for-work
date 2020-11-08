@@ -48,11 +48,13 @@ Archived cuDNN Releases를 클릭하면 8.0.4 이하 버전도 모두 볼 수 �
 
 - `cuDNN` zip 파일의 압축을 풀어준다.  
 
-- "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\" 경로를 따라 아래의 화면이 보이도록 한다. 아래 화면은 cuDNN이 설치된 상태이므로 설치되기 전과는 달라 보일 수 있다. 하지만 가장 위에 있는 폴더가 bin이라면 제대로 온 것이다!
+- **"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\"** 경로를 따라 아래의 화면이 보이도록 한다. 아래 화면은 cuDNN이 설치된 상태이므로 설치되기 전과는 달라 보일 수 있다. 하지만 가장 위에 있는 폴더가 bin이라면 제대로 온 것이다!
 
   ![cudnn 덮어씌우기](https://user-images.githubusercontent.com/58945760/95454339-495dbb00-09a7-11eb-988c-b7b36d16c84e.PNG)
 
-- 압축을 푼 cudnn 파일 안에는 cuda 폴더가 있다. 해당 폴더 안의 모든 파일을 복사하여 위의 위치("C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\")에 붙여넣는다.
+- 압축을 푼 cudnn 파일 안에는 cuda 폴더가 있다. 해당 폴더 안의 모든 파일을 복사하여 위의 위치(**"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\"**)에 붙여넣는다.
+
+
 
 이걸로 cuDNN 설치도 완료되었다. 이제 cmd를 열어 본격적으로 tensorflow-gpu를 설치해보자.
 
