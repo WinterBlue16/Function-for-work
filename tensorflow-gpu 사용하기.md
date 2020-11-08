@@ -94,4 +94,4 @@ jupyter notebook에서의 GPU 실행 확인 화면은 다음과 같다.
 
 ![gpu 사용 확인](https://user-images.githubusercontent.com/58945760/95454942-12d47000-09a8-11eb-9010-81cb52ef5472.PNG)
 
-True가 나온다면 tensorflow-gpu가 제대로 설치된 것이다! 이제 MNIST 예제 등을 사용하여 CPU일 때와 속도를 비교해보자. 한참 빨라진 속도에 놀랄 것이다!
+True가 나온다면 마침내 tensorflow-gpu가 제대로 설치된 것이다! 이제 MNIST 예제 등을 사용하여 CPU일 때와 속도를 비교해보자. 한참 빨라진 속도에 놀랄 것이다!
