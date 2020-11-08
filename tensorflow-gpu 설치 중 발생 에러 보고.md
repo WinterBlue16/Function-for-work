@@ -19,3 +19,6 @@
 원인 : `cuDNN`의 버전이 맞지 않아 생기는 오류이다. `cuDNN 8.0.3` 버전을 설치하였을 때 발생하였다. 
 
 해결 방법 : `cuDNN` 파일을 모두 삭제한 후, `cuDNN 7.6.5 버전`을 다시 다운로드한 후 다시 설치한 `CUDA` 폴더에 덮어씌워 해결하였다. 
+
+해결 후의 정상적인 설치 진행에 대해서는 [이 문서](https://github.com/WinterBlue16/Function-for-work/blob/master/tensorflow-gpu%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0.md#tensorflow-gpu-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0)에서 확인할 수 있다. 
+
