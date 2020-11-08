@@ -64,7 +64,7 @@ $ jupyter kernelspec uninstall "가상환경 이름"
 # ex) jupyter kernelspec uninstall gpu_env
 ```
 
-아래는 tf-gpu:2.1.0이라는 이름의 가상환경 커널을 추가한 모습이다. 
+아래는 tf-gpu:2.1.0이라는 이름의 가상환경 커널을 추가한 모습이다. 따로 cmd를 켤 필요 없이 바로 gpu를 사용할 수 있다. 
 
 ![붙여넣기](https://user-images.githubusercontent.com/58945760/98463846-ca57de80-2201-11eb-81ea-1ad0c8a0921c.png)
 
