@@ -23,7 +23,7 @@ $ cd "사용자 id"
 ```shell
 $ conda create -n "가상환경 이름" "설치하고 싶은 라이브러리" 
 # ex) conda create -n gpu_env python==3.7.3
-$ conda info --env # 설치된 가상환경 확인
+$ conda info --env # 설치된 가상환경 확인 # conda info --envs도 실행 결과는 동일
 ```
 
 
