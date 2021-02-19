@@ -2,5 +2,10 @@
 dessert = ['쿠키', '마들렌', '마카롱', '케이크']
 num = [1,2,3,4]
 
-dessert_dic = { name: value for name, value in zip(dessert, num) }
-print(dessert_dic)
+# code 1
+dessert_dic1 = { name: value for name, value in zip(dessert, num) }
+print(dessert_dic1)
+
+# code 2
+dessert_dic2=dict(zip(dessert, num))
+print(dessert_dic2)
