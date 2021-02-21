@@ -8,6 +8,10 @@ pie_tuple=[('몽쉘', 4780), ('초코파이', 3840), ('빅파이', 3830)]
 pie_dict=dict(pie_tuple)
 print(pie_dict)
 
-# tuple을 dict로 변환하기 2(key ↔ value)
-pie_dict2=dict(map(reversed, pie_tuple))
+# tuple을 dict로 변환하기 2
+pie_dict2=dict((x, y) for x,y in pie_tuple)
 print(pie_dict2)
+
+# tuple을 dict로 변환하기 3(key ↔ value)
+pie_dict3=dict(map(reversed, pie_tuple))
+print(pie_dict3)
