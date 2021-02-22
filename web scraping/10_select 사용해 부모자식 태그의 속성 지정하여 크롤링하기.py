@@ -20,12 +20,12 @@ crawling_ex2 = soup.select('.부모 태그_class > .자식 태그_class > .자�
 crawling_mix = soup.select('.부모 태그_class > #자식 태그_id > .자식의 자식 태그_class')
 
 # select_one으로 element 지정하기
-crawling_text = soup.select_one('태그') # 'span'
-crawling_text2 = soup.select_one('.클래스명') # '.num_txt'
-crawling_text3 = soup.select_one('태그.클래스명') # 'span.num_txt'
-crawling_text4 = soup.select_one('#id') # '#reply'
-crawling_text5 = soup.select_one('태그#id') # 'span#reply'
-crawling_text6 = soup.select_one('태그.클래스명#id') # 'span.num_txt#reply'
+crawling_text = soup.select_one('태그').get_text() # 'span'
+crawling_text2 = soup.select_one('.클래스명').get_text() # '.num_txt'
+crawling_text3 = soup.select_one('태그.클래스명').get_text() # 'span.num_txt'
+crawling_text4 = soup.select_one('#id').get_text() # '#reply'
+crawling_text5 = soup.select_one('태그#id').get_text() # 'span#reply'
+crawling_text6 = soup.select_one('태그.클래스명#id').get_text() # 'span.num_txt#reply'
 
 
 # 참고 사이트 : https://desarraigado.tistory.com/14
