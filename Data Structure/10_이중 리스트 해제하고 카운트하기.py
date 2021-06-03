@@ -11,7 +11,7 @@ sample_li = [[1], [2], [2], [3], [5]]
 
 # 리스트 item 확인해보기
 for li in sample_li:
-    print(li) # 타입 list
+    print(li)  # 타입 list
 
 # 리스트 갯수 카운트해보기(실패)
 count_li = Counter(sample_li)
@@ -21,7 +21,10 @@ print(count_li)
 # 이중 리스트 해제하기
 li2_to_li1 = list(itertools.chain(*sample_li))
 for i in li2_to_li1:
-    print(i) # 타입이 int로 바뀌었다!
+    print(i)  # 타입이 int로 바뀌었다!
+
+# 이중 리스트 해제하기 2
+li2_to_li1 = sum(li2_to_li1, [])
 
 # 다시 리스트 item 카운트
 count_newli = Counter(li2_to_li1)
