@@ -14,3 +14,8 @@ print(sumindexlist)
 listinlist = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 sumindexlist = [sum(item) for item in zip(*listinlist)]
 print(sumindexlist)
+
+
+# 다른 방법
+sumindexlist = list(map(sum, zip(*listinlist)))
+print(sumindexlist)
