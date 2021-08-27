@@ -4,7 +4,7 @@
 import os
 import errno
 
-filename = "/new/file/text1.txt"
+filename = "C:/Users/CUCHO/Desktop/new/file/text1.txt"
 
 if not os.makedirs(os.path.dirname(filename)):
     try:
@@ -18,8 +18,10 @@ with open(filename, 'w') as f:
 
 
 # python 3.2+
-filename = "new/file/text2.txt"
+filename = "C:/Users/CUCHO/Desktop/text2.txt"
 
 os.makedirs(os.path.dirname(filename), exist_ok=True)
 with open(filename, "w") as f:
     f.write("This is new text file.")
+
+print(os.getcwd())

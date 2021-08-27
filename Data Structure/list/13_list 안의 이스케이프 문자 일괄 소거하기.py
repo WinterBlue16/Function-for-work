@@ -2,11 +2,12 @@
 # 이스케이프 문자만 제거하고 싶을 때 활용할 수 있다.
 
 # 실험용 데이터(실제 크롤링으로 가져온 데이터)
-sample_df = ['\n[금자희재] 일상의새벽\n', '\n[금자희재]회자정리(會者定離)-3\n', '\n[금자희재] If The World Was Ending\n', '\n무제 (11)\n', '\n[금자희재] Blood//Water\n', '\n[연홍이창/금자희재] 인因(5)\n', '\n2020-03 백업 05\n', '\n[금자희재] Our Shining Days\n', '\n[금자희재/희재금자] 난파선 下\n', '\n[금자희재/희재금자] 난파선 上\n', '\n놀이터\n']
+sample_df = ['\n[금자희재] 일상의새벽\n', '\n[금자희재]회자정리(會者定離)-3\n', '\n[금자희재] If The World Was Ending\n', '\n무제 (11)\n', '\n[금자희재] Blood//Water\n',
+             '\n[연홍이창/금자희재] 인因(5)\n', '\n2020-03 백업 05\n', '\n[금자희재] Our Shining Days\n', '\n[금자희재/희재금자] 난파선 下\n', '\n[금자희재/희재금자] 난파선 上\n', '\n놀이터\n']
 
 # 이스케이프 문자 제거
 # 방법 1
 sample_df = [text.strip() for text in sample_df]
 
 # 방법 2
-sample_df = list(map(lambda x : x.strip(), sample_df))
+sample_df = list(map(lambda x: x.strip(), sample_df))
