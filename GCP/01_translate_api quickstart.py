@@ -10,4 +10,23 @@ Google Cloud Platform의 translate api를 빠르게 사용, 시험해볼 수 있
 6. google.cloud가 설치되어 있다. 
 
 """
-from google.cloud
+
+from google.cloud import translate_v2
+
+
+def translate_text(target, text):
+    import six
+    from google.cloud import translate_v2 as translate
+
+    translate_client = translate.Client()
+
+    if isinstance(text, six.binary_type):
+        text = text.decode("utf-8")
+
+    result = translate_client.translate(text, target_language=target)
+    print(u"Text: {}".format(result['input']))
+    print(u"Translation: {}".format(result['translatedText']))
+    print(u"Detected source language: {}".format(
+        result['detectedSourceLanguage']))
+
+    return result
