@@ -10,5 +10,18 @@ from pytube import extract
 
 
 def get_video_id(url):
+    """
+    youtube url 패턴은 아래와 같습니다.
+    url1='http://youtu.be/SA2iWivDJiE'
+    url2='http://www.youtube.com/watch?v=_oPAwA_Udwc&feature=feedu'
+    url3='http://www.youtube.com/embed/SA2iWivDJiE'
+    url4='http://www.youtube.com/v/SA2iWivDJiE?version=3&amp;hl=en_US'
+    url5='https://www.youtube.com/watch?v=rTHlyTphWP0&index=6&list=PLjeDyYvG6-40qawYNR4juzvSOg-ezZ2a6'
+    url6='youtube.com/watch?v=_lOT2p_FCvA'
+    url7='youtu.be/watch?v=_lOT2p_FCvA'
+    url8='https://www.youtube.com/watch?time_continue=9&v=n0g-Y0oo5Qs&feature=emb_logo'
+
+    위의 패턴들은 모두 pytube를 통해 video id를 추출할 수 있습니다.
+    """
     video_id = extract.video_id(url)
     return video_id
