@@ -11,7 +11,7 @@ def vtt_to_transcript(file_path):
     now = datetime.now()
     file_name = now.strftime("%H%M%S")
 
-    for caption in webvtt.read(path):
+    for caption in webvtt.read(file_path):
         caption_text = caption.text
         text_list.append(caption_text)
 
