@@ -10,7 +10,7 @@ def download_youtube_sub(youtube_url, vtt_path):
     ydl_opts = {
         'outtmpl': vtt_path + 'sub_{}'.format(video_id),
         'forceduration': True,
-        'subtitleslangs': ['en'],
+        'subtitleslangs': ['en'],  # 영상에 수록된 자막에서 원하는 언어의 자막만 다운로드 가능
         'allsubtitles': True,
         'skipdownload': False
     }
