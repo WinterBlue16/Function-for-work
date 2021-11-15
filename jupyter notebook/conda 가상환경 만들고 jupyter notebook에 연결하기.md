@@ -12,13 +12,15 @@
 
 > 이하 코드는 Anaconda prompt가 아닌 cmd를 기준으로 한다.
 
+### 1.1. 경로 이동
+
 ```shell
 $ cd / # C 드라이브로 이동
 $ cd Users #사용자 폴더로 이동
 $ cd "사용자 id" 
 ```
 
-
+### 1.2. conda를 사용한 가상환경 구축
 
 ```shell
 $ conda create -n "가상환경 이름" "설치하고 싶은 라이브러리" 
@@ -26,7 +28,7 @@ $ conda create -n "가상환경 이름" "설치하고 싶은 라이브러리"
 $ conda info --env # 설치된 가상환경 확인 # conda info --envs도 실행 결과는 동일
 ```
 
-
+### 1.3. 기초적인 conda 명령어
 
 ```shell
 $ conda activate "가상환경 이름" # 가상환경 실행
@@ -37,12 +39,20 @@ $ pip install "가상환경에 설치할 라이브러리 이름" # 라이브러�
 $ conda deactivate # 가상환경 실행 종료
 ```
 
+
+
 ```shell
+# 똑같은 가상환경을 복제하고 싶을 때
+$ conda create -n "새로운 가상환경 이름" --clone "복제하고 싶은 가상환경 이름"
+# ex) conda create -n new_env_2 --clone src_env
+
 # 가상환경을 삭제하고 싶을 때
 $ conda remove -n "가상환경 이름" --all
 # ex) conda remove -n gpu_env --all 
 # 완전히 가상환경을 삭제하기 위해서는 anaconda/env 경로 안의 해당 가상환경 폴더까지 제거해야 함
 ```
+
+
 
 
 
