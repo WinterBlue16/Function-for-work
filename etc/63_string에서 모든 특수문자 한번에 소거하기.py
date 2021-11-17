@@ -28,3 +28,15 @@ def remove_punctuation_marks(text):
             text = text.replace(p, '')
 
     return text
+
+
+# 방법 3
+punctuation_marks = ['~', '@', '#', '$', '%', '^', '&',
+                     '*', '(', ')', '+', '-', ';', ':', '/', ',', '.']
+
+
+def filter_punctuation_marks(text, punctuation_marks=punctuation_marks):
+    punctuation_marks = ''.join(punctuation_marks)
+    filtered_text = re.sub('['+punctuation_marks+']', '', text)
+    print(filtered_text)
+    return filtered_text
