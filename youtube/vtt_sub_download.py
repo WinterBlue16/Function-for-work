@@ -8,11 +8,11 @@ import youtube_dl
 def download_youtube_sub(youtube_url, vtt_path):
     video_id = youtube_url[-11:]
     ydl_opts = {
-        'outtmpl': vtt_path + 'sub_{}'.format(video_id),
-        'forceduration': True,
+        'outtmpl': vtt_path + 'sub_{}'.format(video_id),  # 자막 파일을 저장할 로컬 경로
         'subtitleslangs': ['en'],  # 영상에 수록된 자막에서 원하는 언어의 자막만 다운로드 가능
-        'allsubtitles': True,
-        'skipdownload': False
+        'writesubtitles': True,
+        # 'allsubtitles': True, # 해당 동영상에서 다운로드 가능한 모든 언어의 자막을 다운로드함
+        'skipdownload': True
     }
 
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
