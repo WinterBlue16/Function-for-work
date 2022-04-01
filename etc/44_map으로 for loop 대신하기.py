@@ -6,5 +6,5 @@ for i in sample_list:
 print(new_sample_list)
 
 # map
-new_sample_list = map(lambda i: i*i, sample_list)
+new_sample_list = list(map(lambda i: i*i, sample_list))
 print(new_sample_list)
