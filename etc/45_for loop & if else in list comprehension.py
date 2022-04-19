@@ -8,3 +8,5 @@ print([i for i in sample_list if i % 2 == 0])
 
 # if else + for loop
 print([i*2 if i % 2 == 0 else i for i in sample_list])
+
+# test
