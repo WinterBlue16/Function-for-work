@@ -20,3 +20,9 @@ sample_test = 'name= test3 test3 test3 test3'
 str_filter = re.compile('(?<==).+')
 filtered_str = str_filter.search(sample_test).group()
 print(filtered_str)
+
+# ')' 뒤의 string filtering
+sample_test = '(name) test4 test4 test4 test4'
+str_filter = re.compile('(?<=\)).+')
+filtered_str = str_filter.search(sample_test).group()
+print(filtered_str)
