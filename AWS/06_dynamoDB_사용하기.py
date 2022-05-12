@@ -1,4 +1,6 @@
 import boto3
+from boto3.dynamodb.conditions import Key, Attr
+
 
 # 1. create table
 dynamodb = boto3.resource("dynamodb")
@@ -75,5 +77,41 @@ def update_item(table_name: str, key_dict:dict, column_name: str, value: int):
         }
     )
     print('데이터가 업데이트되었습니다.')
+    
 
 # update_item(table_name,key_dict, 'population', 234)
+
+
+
+def delete_item(table_name: str, key_dict: dict):
+    table = dynamodb.Table(table_name)
+
+    table.delete_item(Key=key_dict)
+    print("item 삭제가 완료되었습니다.")
+
+
+# delete_item(table_name, key_dict)
+
+def query_item_by_key(table_name:str, key_dict:dict): # only partion key
+    table = dynamodb.Table(table_name)
+    key_list = list(key_dict.keys())
+    value_list = list(key_dict.values())
+    
+    response = table.query(
+        KeyConditionExpression=Key(key_list[-1]).eq(value_list[-1]) # eq: equal, lt: less than, gt: great than
+    )
+    item = response['Items']
+    print(item)
+    
+# query_item_by_key(table_name, key_dict)
+    
+def query_time_by_attr(table_name:str, attr_name, attr_value):
+    table = dynamodb.Table(table_name)
+    
+    response = table.scan(
+        FilterExpression=Attr(attr_name).gte(attr_value)
+    )
+    item = response['Items']
+    print(item)
+
+# query_time_by_attr(table_name, 'population', 1000)
