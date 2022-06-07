@@ -38,22 +38,23 @@ class WebNovel:
 
 
 def save_episodes_docx(text: list, idices: list):
-    doc = docx.Document()
 
-    for i in range(1, len(idices)):
-        if i == len(idices) - 1:
+    for i in range(len(idices)):
+        if i + 1 == len(idices):
             last_episode = text[idices[i] :]
             last_episode = "\n".join(last_episode)
 
             # save docx
+            doc = docx.Document()
             doc.add_paragraph(last_episode)
             doc.save("text_{}.docx".format(i))  # title, episode number 추출 필요
 
         else:
-            one_episode = text[: idices[i]]
+            one_episode = text[idices[i] : idices[i + 1]]
             one_episode = "\n".join(one_episode)
 
             # save docx
+            doc = docx.Document()
             doc.add_paragraph(one_episode)
             doc.save("text_{}.docx".format(i))
 
@@ -63,8 +64,8 @@ def seperate_episode(text: list):
 
     # 1. 정규표현식 적용
     for t in text:
-        episode_title_pattern = "^\([0-9][0-9]\)"  # 개선 필요
-        if re.match(episode_title_pattern, t):
+        episode_title_pattern = r"\(\d\d\)"  # 개선 필요
+        if re.search(episode_title_pattern, t):
             slice_idx_list.append(text.index(t))
 
     print("분리할 index 목록:", slice_idx_list)
@@ -84,8 +85,3 @@ def extract_docx_text(path: str):
     # full_text = "\n".join(full_text)
     seperate_episode(full_text)
     return full_text
-
-
-extract_docx_text(
-    "/Users/winter_com/Downloads/[7Fates_CHAKHO] 웹소설 61-70화(0228_최종).docx"
-)
