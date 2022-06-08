@@ -85,3 +85,9 @@ def extract_docx_text(path: str):
     # full_text = "\n".join(full_text)
     seperate_episode(full_text)
     return full_text
+
+
+# 이 부분은 commit 하지 않음
+extract_docx_text(
+    "/Users/winter_com/Downloads/[7Fates_CHAKHO] 웹소설 61-70화(0228_최종).docx"
+)
