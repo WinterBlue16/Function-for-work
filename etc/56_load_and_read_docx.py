@@ -27,12 +27,35 @@ class WebNovel:
 
     def set_text(self, text):
         self.text = text
+        
+    def sperate_episode(text: list):
+        slice_idx_list = []
 
-    def extract_episode_number(self):
-        # do something
-        return
+        for t in text:
+            episode_title_pattern = r"\(\d\d\)"
+            if re.search(episode_title_pattern, t):
+                slice_idx_list.append(text.index(t))
 
-    def extract_title(self):
+        print("분리할 index 목록:", slice_idx_list)
+
+        save_episodes_docx(text, slice_idx_list)
+
+    def extract_title(self, text: list):
+        all_title_list = []
+        
+        for t in text:
+            episode_title_pattern = r"\(\d\d\)"  
+            if re.search(episode_title_pattern, t):
+                # TODO: 후방탐색 추가
+                all_title_list.append(t)
+
+        # TODO: 에피소드 번호 추출해서 dict로 ex) [{episode_number : title}, {episode_number2: title}...]
+
+        print("title 목록 :", all_title_list)
+        
+        return all_title_list
+
+    def extract_episode_number(self, text: list):
         # do something
         return
 
@@ -47,7 +70,7 @@ def save_episodes_docx(text: list, idices: list):
             # save docx
             doc = docx.Document()
             doc.add_paragraph(last_episode)
-            doc.save("text_{}.docx".format(i))  # title, episode number 추출 필요
+            # doc.save("text_{}.docx".format(i))  # title, episode number 추출 필요
 
         else:
             one_episode = text[idices[i] : idices[i + 1]]
@@ -56,7 +79,7 @@ def save_episodes_docx(text: list, idices: list):
             # save docx
             doc = docx.Document()
             doc.add_paragraph(one_episode)
-            doc.save("text_{}.docx".format(i))
+            # doc.save("text_{}.docx".format(i))
 
 
 def seperate_episode(text: list):
