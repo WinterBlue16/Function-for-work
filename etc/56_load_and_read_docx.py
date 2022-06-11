@@ -70,6 +70,9 @@ class WebNovel:
         # do something
         return
 
+    def get_episode_info_dict():
+        return
+
 
 def save_episodes_docx(text: list, idices: list):
 
