@@ -5,45 +5,78 @@ import docx
 # 파일명에서 데이터를 분리하는 함수(title, episode range etc) 외에는 class에 함수를 포함시킨다
 # class WebNovel은 전체 문서를 대상으로 하고, episode별 문서의 경우 이를 상속하는 별도 class로 분리
 class WebNovel:
-    def __init__(self, title, episode_number, text):
-        self.title = title
-        self.episode_number = episode_number
-        self.text = text
+    def __init__(self, path):
+        self.path = path
+        self.text = None
+        self.title = None
+        self.file_name = None
+        self.start_episode_number = None
+        self.end_episode_number = None
 
     def get_title(self):
         return self.title
 
-    def get_episode_number(self):
-        return self.episode_number
-
     def get_text(self):
         return self.text
 
-    def set_title(self, title):
-        self.title = title
+    def set_file_name(self):
+        path = self.path
+        file_name = path.split("/")[-1]
+        self.file_name = file_name
+        return self.file_name
 
-    def set_episode_number(self, episode_number):
-        self.episode_number = episode_number
+    def set_start_episode_number(self, episode_number):
+        self.start_episode_number = episode_number
 
-    def set_text(self, text):
-        self.text = text
+    def set_end_episode_number(self, episode_number):
+        self.end_episode_number = episode_number
 
-    def sperate_episode(text: list):
-        slice_idx_list = []
+    def set_title(self):
+        file_name = self.set_file_name()
 
-    def sperate_episode(text: list):
-        slice_idx_list = []
+        # p = re.compile(".+(?=\(완)")  # 파일 네이밍 규칙 지정 필요 # episode number 포함시킴
+        p = r"\[(.+?)\]"  # 파일 네이밍 규칙 지정 필요 # episode number 포함시킴
+        webnovel_title = re.search(p, file_name).group(1)
+        print("웹소설 타이틀이 추출되었습니다 :", webnovel_title)
+        self.title = webnovel_title
+        return self.title
 
-        for t in text:
-            episode_title_pattern = r"\(\d\d\)"
-            if re.search(episode_title_pattern, t):
-                slice_idx_list.append(text.index(t))
+    def extract_full_novel_text(self):
+        doc = docx.Document(self.path)
+        full_text = []
+        for p in doc.paragraphs:
+            if p.text == "":
+                full_text.append("\n")
+            else:
+                full_text.append(p.text)
 
-        print("분리할 index 목록:", slice_idx_list)
+        self.text = full_text
+        return self.text
 
-        save_episodes_docx(text, slice_idx_list)
+    def extract_episode_numbers(self):
+        file_name = self.set_file_name()
 
-    def extract_title(self, text: list):
+        episode_number_pattern = r"\d{1,3}-\d{1,3}"
+        episode_numbers = re.search(episode_number_pattern, file_name).group()
+        episode_number_list = episode_numbers.split("-")
+        start_episode_number, end_episode_number = (
+            episode_number_list[0],
+            episode_number_list[-1],
+        )
+
+        print("시작 에피소드:", start_episode_number)
+        print("끝 에피소드:", end_episode_number)
+
+        self.set_start_episode_number(start_episode_number)
+        self.set_end_episode_number(end_episode_number)
+
+        all_episode_list = [
+            i for i in range(int(start_episode_number), int(end_episode_number) + 1)
+        ]
+
+        return all_episode_list
+
+    def extract_all_title(self, text: list):
         all_title_list = []
 
         for t in text:
@@ -58,24 +91,48 @@ class WebNovel:
 
         return all_title_list
 
-    def extract_episode_number(self, text: list):
-        all_episode_number_list = []
+    def extract_all_episode_index(self, text: list):
+        slice_idx_list = []
 
+        # 1. 정규표현식 적용
         for t in text:
-            episode_title_pattern = r"\(\d\d\)"
+            episode_title_pattern = r"\(\d\d\)"  # 개선 필요
             if re.search(episode_title_pattern, t):
-                # TODO: 후방탐색 추가
-                all_episode_number_list.append(t)
+                slice_idx_list.append(text.index(t))
 
-        # do something
-        return
+        print("분리할 index 목록:", slice_idx_list)
 
-    def get_episode_info_dict():
-        return
+    def save_episodes_docx(text: list, idices: list):
+        for i in range(len(idices)):
+            if i + 1 == len(idices):
+                last_episode = text[idices[i] :]
+                last_episode = "\n".join(last_episode)
+
+                # save docx
+                doc = docx.Document()
+                doc.add_paragraph(last_episode)
+                # doc.save("text_{}.docx".format(i))  # title, episode number 추출 필요
+
+            else:
+                one_episode = text[idices[i] : idices[i + 1]]
+                one_episode = "\n".join(one_episode)
+
+                # save docx
+                doc = docx.Document()
+                doc.add_paragraph(one_episode)
+                # doc.save("text_{}.docx".format(i))
 
 
+file_path = ""
+single_webnovel = WebNovel(file_path)
+print(single_webnovel.extract_full_novel_text())
+single_webnovel.set_title()
+print(single_webnovel.title)
+print(single_webnovel.extract_episode_numbers())
+
+
+# 이하 기존 코드
 def save_episodes_docx(text: list, idices: list):
-
     for i in range(len(idices)):
         if i + 1 == len(idices):
             last_episode = text[idices[i] :]
