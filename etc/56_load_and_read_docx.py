@@ -76,14 +76,16 @@ class WebNovel:
 
         return all_episode_list
 
-    def extract_all_title(self, text: list):
+    def extract_all_title(self):
         all_title_list = []
+        text = self.text
 
         for t in text:
             episode_title_pattern = r"\(\d\d\)"
             if re.search(episode_title_pattern, t):
-                # TODO: 후방탐색 추가
-                all_title_list.append(t)
+                p = re.compile(r"(?<=\)\s).+")
+                title = p.search(t).group()
+                all_title_list.append(title)
 
         # TODO: 에피소드 번호 추출해서 dict로 ex) [{episode_number : title}, {episode_number2: title}...]
 
@@ -123,13 +125,22 @@ class WebNovel:
                 # doc.save("text_{}.docx".format(i))
 
 
+def generate_title_episode_dict(title_list: list, episode_list: list):
+    title_episode_dict = dict(zip(episode_list, title_list))
+    return title_episode_dict
+
+
 file_path = ""
 single_webnovel = WebNovel(file_path)
 print(single_webnovel.extract_full_novel_text())
 single_webnovel.set_title()
 print(single_webnovel.title)
-print(single_webnovel.extract_episode_numbers())
+episode_list = single_webnovel.extract_episode_numbers()
+title_list = single_webnovel.extract_all_title()
+print(generate_title_episode_dict(title_list, episode_list))
 
+# TODO: 에피소드 분리
+# TODO: txt 파일에 제목과 에피소드 추가
 
 # 이하 기존 코드
 def save_episodes_docx(text: list, idices: list):
