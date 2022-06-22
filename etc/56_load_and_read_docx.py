@@ -144,7 +144,7 @@ def generate_title_episode_dict(title_list: list, episode_list: list):
     return title_episode_dict
 
 
-file_path = "/Users/winter_com/Downloads/[7Fates_CHAKHO] 웹소설 71-80화(0331_최종).docx"
+file_path = ""
 single_webnovel = WebNovel(file_path)
 print(single_webnovel.extract_full_novel_text())
 
