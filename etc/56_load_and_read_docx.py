@@ -93,8 +93,9 @@ class WebNovel:
 
         return all_title_list
 
-    def extract_all_episode_index(self, text: list):
+    def extract_all_episode_index(self):
         slice_idx_list = []
+        text = self.text
 
         # 1. 정규표현식 적용
         for t in text:
@@ -103,26 +104,39 @@ class WebNovel:
                 slice_idx_list.append(text.index(t))
 
         print("분리할 index 목록:", slice_idx_list)
+        return slice_idx_list
 
-    def save_episodes_docx(text: list, idices: list):
+    def save_episodes_docx(
+        self, idices: list, title_list: list, episode_number_list: list
+    ):
+        text = self.text
+        # title_list = list(title_episode_dict.keys())
+        # episode_number_list = list(title_episode_dict.values())
+
         for i in range(len(idices)):
             if i + 1 == len(idices):
                 last_episode = text[idices[i] :]
                 last_episode = "\n".join(last_episode)
+                title = title_list[-1]
+                episode_number = episode_number_list[-1]
 
                 # save docx
                 doc = docx.Document()
                 doc.add_paragraph(last_episode)
-                # doc.save("text_{}.docx".format(i))  # title, episode number 추출 필요
+                doc.save(
+                    "{}_{}_{}.docx".format(self.title, title, episode_number)
+                )  # title, episode number 추출 필요
 
             else:
                 one_episode = text[idices[i] : idices[i + 1]]
                 one_episode = "\n".join(one_episode)
+                title = title_list[i]
+                episode_number = episode_number_list[i]
 
                 # save docx
                 doc = docx.Document()
                 doc.add_paragraph(one_episode)
-                # doc.save("text_{}.docx".format(i))
+                doc.save("{}_{}_{}.docx".format(self.title, title, episode_number))
 
 
 def generate_title_episode_dict(title_list: list, episode_list: list):
@@ -130,14 +144,19 @@ def generate_title_episode_dict(title_list: list, episode_list: list):
     return title_episode_dict
 
 
-file_path = ""
+file_path = "/Users/winter_com/Downloads/[7Fates_CHAKHO] 웹소설 71-80화(0331_최종).docx"
 single_webnovel = WebNovel(file_path)
 print(single_webnovel.extract_full_novel_text())
+
 single_webnovel.set_title()
 print(single_webnovel.title)
+
 episode_list = single_webnovel.extract_episode_numbers()
 title_list = single_webnovel.extract_all_title()
-print(generate_title_episode_dict(title_list, episode_list))
+# generate_title_episode_dict(title_list, episode_list)
+
+index_list = single_webnovel.extract_all_episode_index()
+print(single_webnovel.save_episodes_docx(index_list, title_list, episode_list))
 
 # TODO: 에피소드 분리
 # TODO: txt 파일에 제목과 에피소드 추가
